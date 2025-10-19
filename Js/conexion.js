@@ -1,11 +1,12 @@
-async function conexion(Unfiltro) {   // ← faltaba async
-    if (Unfiltro == "All") {
-        // si quiero todos los pokemones
+let totalPokes = 1025;
+let pokemones = [];
+
+async function conexion(Unfiltro) {
+    if (Unfiltro === "All") {
         const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${totalPokes}`);
         const data = await res.json();
         return data.results;
     } else {
-        // los quiero por tipo
         const res = await fetch(`https://pokeapi.co/api/v2/type/${Unfiltro}`);
         const data = await res.json();
         const pokemonesTipo = [];
@@ -15,9 +16,6 @@ async function conexion(Unfiltro) {   // ← faltaba async
         return pokemonesTipo;
     }
 }
-
-let pokemones = [];
-let totalPokes = 1025;
 
 async function conexionLista() {
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${totalPokes}`);
@@ -29,15 +27,13 @@ async function General() {
     if (pokemones.length === 0) {
         pokemones = await conexion("All");
     }
-    
     Home();
     console.log(pokemones[2].name);
 }
 
-
-async function FiltroConexion(filtroelegido) {   // ← faltaba async
-    let pokesfiltrados = await conexion(filtroelegido);  // ← faltaba let
+async function FiltroConexion(filtroelegido) {
+    let pokesfiltrados = await conexion(filtroelegido);
     document.getElementById("la-lista").innerHTML = "";
-    let listaFiltro = GenerarLista(pokesfiltrados);      // ← faltaba let
+    let listaFiltro = GenerarLista(pokesfiltrados);
     document.getElementById("la-lista").innerHTML = listaFiltro;
 }

@@ -2,10 +2,8 @@ function GenerarLista(lista) {
     var listapokes = "";
     for (var i = 0; i < lista.length; i++) {
         let nombre = lista[i].name;
-
-        // Extraer ID del URL
         let url = lista[i].url;
-        let id = url.split("/")[url.split("/").length - 2]; // el penúltimo elemento es el ID
+        let id = url.split("/")[url.split("/").length - 2];
 
         listapokes += `
             <div class="un-pokemon" onclick="Detalle(${id})">
@@ -29,13 +27,12 @@ function buscadorfuncion(asa) {
         let listaHTML = GenerarLista(filtrados);
         document.getElementById("la-lista").innerHTML = listaHTML;
     } else {
-        let listaHTML = GenerarLista(pokemones); // ← corregido (G mayúscula)
+        let listaHTML = GenerarLista(pokemones);
         document.getElementById("la-lista").innerHTML = listaHTML;
     }
 }
 
 function Home() {
-    // Buscador
     const buscador = document.createElement("input");
     buscador.classList.add("c-buscador");
     buscador.type = "text";
@@ -44,7 +41,6 @@ function Home() {
         buscadorfuncion(buscador.value);
     });
 
-    // Filtros
     const tipos = [
         "normal", "fighting", "flying", "poison", "ground", "rock", "bug",
         "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice",
@@ -61,16 +57,13 @@ function Home() {
         filtro.appendChild(btn);
     }
 
-    // Lista
     var contenedorLista = document.createElement("div");
     contenedorLista.classList.add("c-lista");
     contenedorLista.id = "la-lista";
 
-    // Agregar al root
     document.getElementById("root").appendChild(filtro);
     document.getElementById("root").appendChild(buscador);
     document.getElementById("root").appendChild(contenedorLista);
 
-    // Mostrar todos los pokes de inicio
     document.getElementById("la-lista").innerHTML = GenerarLista(pokemones);
 }

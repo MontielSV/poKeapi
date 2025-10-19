@@ -9,7 +9,7 @@
 <body>
 <nav>
     <button onclick="Home()">Home</button>
-    <button onclick="informacion()">informacion</button>
+    <button onclick="Informacion()">informacion</button>
     <button onclick="Capturadosoriginal()">Capturados</button>
     <button onclick="Favoritos()">Favoritos</button>
 </nav>
@@ -19,17 +19,15 @@
 </div>
 
 <!-- ✅ Scripts deben ir aquí, fuera del <nav> -->
+<script src="Js/conexion.js"></script>
 <script src="Js/Home.js"></script>
 <script src="Js/capturados.js"></script>
 <script src="Js/favoritos.js"></script>
 <script src="Js/informacion.js"></script>
 <script src="Js/pokemon.js"></script>
-<script src="Js/conexion.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", General);
+</script>
 </body>
-   <script>
-
-        document.addEventListener("DOMContentLoaded",General)
-
-    </script>
-    
 </html>
